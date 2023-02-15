@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
-import './widgets/user_transaction.dart';
+import 'package:personal_expenses/widgets/transaction_list.dart';
 import './models/transaction.dart';
 
 
@@ -67,7 +67,10 @@ final List<Transaction> _userTransaction = [
     showModalBottomSheet(
       context: context, 
       builder: (_) {
-        return NewTransaction((){});
+        return GestureDetector(
+          onTap: () {},
+          child: NewTransaction(_addTransaction)
+        );
       }
     );
   }
@@ -98,7 +101,7 @@ final List<Transaction> _userTransaction = [
               child: Text("Chart!")
             ),
           ),
-          UserTransactions(_addTransaction, _userTransaction)
+          TransactionList(_userTransaction)
       ],
       ),
       // fab 위치 설정
@@ -106,7 +109,7 @@ final List<Transaction> _userTransaction = [
       // fab 아이콘 설정
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => startAddNewTrx(context),
       ),
     );
   }
