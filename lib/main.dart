@@ -11,8 +11,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal Expenses',
+      // theme: ThemeData(
+      //   primarySwatch: Colors.blue,
+      //   accentColor: Colors.amber,
+      // ),
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.blue,
+          secondary: Colors.black
+        )
+      ),
       home: MyHomePage(),
     );
   }
@@ -81,7 +92,8 @@ final List<Transaction> _userTransaction = [
     _id = _userTransaction.length;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        // backgroundColor: Colors.red,
+        title: Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
             onPressed: () {}, 
