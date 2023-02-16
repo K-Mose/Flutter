@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
-
+class NewTransaction extends StatefulWidget {
   final Function _addTrx;
 
   NewTransaction(this._addTrx);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -15,11 +21,15 @@ class NewTransaction extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-
-    _addTrx(
+    titleController.clear();
+    amountController.clear();
+    widget._addTrx(
       enteredTitle,
       enteredAmount
     );
+
+    // context 내의 topmost screen을 pop 시킴
+    Navigator.of(context).pop();
   }
 
   @override

@@ -69,7 +69,8 @@ final List<Transaction> _userTransaction = [
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(_addTransaction)
+          child: NewTransaction(_addTransaction),
+          behavior: HitTestBehavior.opaque,
         );
       }
     );
