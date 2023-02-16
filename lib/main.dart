@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
-      primarySwatch: Colors.red,
+      primarySwatch: Colors.blue,
       fontFamily: 'Quicksand',
       textTheme: ThemeData.light().textTheme.copyWith(
         // 특정 테마별 스타일 지정
@@ -86,18 +86,18 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
 
 final List<Transaction> _userTransaction = [
-    Transaction(
-      id: '1', 
-      title: 'New Shoes', 
-      amount: 120.0, 
-      date: DateTime.now()
-    ),
-    Transaction(
-      id: '2', 
-      title: 'Protein', 
-      amount: 89.99, 
-      date: DateTime.now()
-    ),
+    // Transaction(
+    //   id: '1', 
+    //   title: 'New Shoes', 
+    //   amount: 120.0, 
+    //   date: DateTime.now()
+    // ),
+    // Transaction(
+    //   id: '2', 
+    //   title: 'Protein', 
+    //   amount: 89.99, 
+    //   date: DateTime.now()
+    // ),
   ];
 
   int _id;
