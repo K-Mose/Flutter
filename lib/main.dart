@@ -11,18 +11,60 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData();
+    final ThemeData theme = ThemeData(
+      primarySwatch: Colors.red,
+      fontFamily: 'Quicksand',
+      textTheme: ThemeData.light().textTheme.copyWith(
+        // 특정 테마별 스타일 지정
+        titleLarge: TextStyle(
+          fontFamily: "OpenSans",
+          fontSize: 20,
+          fontWeight: FontWeight.w700
+        ),
+        titleMedium: TextStyle(
+          fontFamily: "Quicksand",
+          fontSize: 18,
+          fontWeight: FontWeight.w500
+        ),
+        titleSmall: TextStyle(
+          fontFamily: "OpenSans",
+          fontSize: 25,
+          fontWeight: FontWeight.bold
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+          toolbarTextStyle: ThemeData.light().textTheme.headlineLarge.copyWith(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.normal
+          ),
+          // AppBar title Style 1
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSans',
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+          )
+        )
+    );
     return MaterialApp(
       title: 'Personal Expenses',
       // theme: ThemeData(
       //   primarySwatch: Colors.blue,
       //   accentColor: Colors.amber,
+      //   fontFamily: 'Quicksand'
       // ),
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
-          primary: Colors.blue,
           secondary: Colors.black
-        )
+        ),
+        // AppBar title Style 2
+        // textTheme: ThemeData.light().textTheme.copyWith(
+        //   titleLarge: TextStyle(
+        //     fontFamily: 'OpenSans',
+        //     fontSize: 22,
+        //     fontWeight: FontWeight.bold
+        //   )
+        // )
       ),
       home: MyHomePage(),
     );
@@ -93,7 +135,10 @@ final List<Transaction> _userTransaction = [
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.red,
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses', 
+          style: TextStyle(fontFamily: 'Open Sans'),
+        ),
         actions: <Widget>[
           IconButton(
             onPressed: () {}, 
