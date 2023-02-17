@@ -10,7 +10,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 500,
       child: _userTransaction.isEmpty ? Column(
         children: [
           Text(
@@ -33,6 +33,33 @@ class TransactionList extends StatelessWidget {
         itemBuilder: (context, index) {
           final tx = _userTransaction[index];
           return Card(
+            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+            elevation: 5,
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                child: Padding(
+                  padding: EdgeInsets.all(5),
+                  child: FittedBox(
+                    child: Text('\$ ${tx.amount.toString()}')
+                  ),
+                ),
+              ),
+              title: Text(
+                tx.title, 
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              subtitle: Text(DateFormat.yMMMd().format(tx.date)),
+            ),
+          );
+        },
+        itemCount: _userTransaction.length,
+      ),
+    );
+  }
+}
+/*
+Card(
               child: Row(children: <Widget>[
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -70,9 +97,4 @@ class TransactionList extends StatelessWidget {
               ],
             )
           ]));
-        },
-        itemCount: _userTransaction.length,
-      ),
-    );
-  }
-}
+*/

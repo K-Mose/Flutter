@@ -91,13 +91,13 @@ final List<Transaction> _userTransaction = [
       id: '1', 
       title: 'New Shoes', 
       amount: 120.0, 
-      date: DateTime.now()
+      date: DateTime.now().subtract(Duration(days: 1))
     ),
     Transaction(
       id: '2', 
       title: 'Protein', 
       amount: 89.99, 
-      date: DateTime.now()
+      date: DateTime.now().subtract(Duration(days: 2))
     ),
   ];
 
