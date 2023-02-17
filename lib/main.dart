@@ -101,8 +101,6 @@ final List<Transaction> _userTransaction = [
     ),
   ];
 
-  int _id;
-
   List<Transaction> get _recentTransactions {
     return _userTransaction.where((trx) {
       return trx.date.isAfter(
@@ -113,20 +111,20 @@ final List<Transaction> _userTransaction = [
     }).toList();
   }
 
-  void _addTransaction(String title, double amount) {
-    _id += 1;
+  void _addTransaction(String title, double amount, DateTime date) {
     setState(() {
       _userTransaction.add(
         Transaction(
-          id: "$_id", 
+          id: "${DateTime.now().toString()}", 
           title: title, 
           amount: amount, 
-          date: DateTime.now()
+          date: date
         )
       );
     });
     print(_userTransaction);
   }
+
   void startAddNewTrx(BuildContext context) {
     showModalBottomSheet(
       context: context, 
@@ -140,9 +138,16 @@ final List<Transaction> _userTransaction = [
     );
   }
 
+  void _deleteTrx(String id) {
+    setState(() {
+      _userTransaction.removeWhere((trx) {
+        return trx.id == id;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    _id = _userTransaction.length;
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.red,
@@ -162,7 +167,7 @@ final List<Transaction> _userTransaction = [
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Chart(_recentTransactions),
-          TransactionList(_userTransaction)
+          TransactionList(_userTransaction, _deleteTrx)
       ],
       ),
       // fab 위치 설정
