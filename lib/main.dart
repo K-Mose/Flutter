@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_expenses/widgets/chart.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
 import 'package:personal_expenses/widgets/transaction_list.dart';
 import './models/transaction.dart';
@@ -86,21 +87,31 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
 
 final List<Transaction> _userTransaction = [
-    // Transaction(
-    //   id: '1', 
-    //   title: 'New Shoes', 
-    //   amount: 120.0, 
-    //   date: DateTime.now()
-    // ),
-    // Transaction(
-    //   id: '2', 
-    //   title: 'Protein', 
-    //   amount: 89.99, 
-    //   date: DateTime.now()
-    // ),
+    Transaction(
+      id: '1', 
+      title: 'New Shoes', 
+      amount: 120.0, 
+      date: DateTime.now()
+    ),
+    Transaction(
+      id: '2', 
+      title: 'Protein', 
+      amount: 89.99, 
+      date: DateTime.now()
+    ),
   ];
 
   int _id;
+
+  List<Transaction> get _recentTransactions {
+    return _userTransaction.where((trx) {
+      return trx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7)
+        )
+      );
+    }).toList();
+  }
 
   void _addTransaction(String title, double amount) {
     _id += 1;
@@ -122,8 +133,8 @@ final List<Transaction> _userTransaction = [
       builder: (_) {
         return GestureDetector(
           onTap: () {},
-          child: NewTransaction(_addTransaction),
           behavior: HitTestBehavior.opaque,
+          child: NewTransaction(_addTransaction),
         );
       }
     );
@@ -150,15 +161,7 @@ final List<Transaction> _userTransaction = [
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Card(
-            color: Colors.blue,
-            elevation: 5,
-            child: Container(
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Text("Chart!")
-            ),
-          ),
+          Chart(_recentTransactions),
           TransactionList(_userTransaction)
       ],
       ),
