@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
-  final String categoryId;
-  final String categoryTitle;
+  // final String categoryId;
+  // final String categoryTitle;
 
-  CategoryMealsScreen({
-    required this.categoryId,
-    required this.categoryTitle
-  });
+  // CategoryMealsScreen({
+  //   required this.categoryId,
+  //   required this.categoryTitle
+  // });
 
   @override
   Widget build(BuildContext context) {
-    print("id / title : $categoryId / $categoryTitle");
+    // ModalRoute - material.dart에서 제공하는 라우팅 
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     return Scaffold(
       appBar: AppBar(
-        title: Text(categoryTitle),
+        title: Text(routeArgs['title']!),
       ),
-      body: Center(
-        child: Text(""),
+      body: const Center(
+        child: Text("The Recipes For The Category!"),
       ),
     );
   }

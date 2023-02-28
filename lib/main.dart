@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './categories_screen.dart';
+import './category_meals_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
       primarySwatch: Colors.yellow,
-      canvasColor: Color.fromARGB(255, 0, 162, 255),
+      canvasColor: Colors.yellow[200],
       fontFamily: 'Raleway',
       textTheme: ThemeData.light().textTheme.copyWith(
         bodyLarge: const TextStyle(
@@ -45,37 +46,9 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const CategoriesScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Happy Meals"),
-      ),
-      body: Center(
-        child: Text(
-          "text ${context.size.toString()}"
-        )
-      ),
+      routes: {
+        '/category-meals' : (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
