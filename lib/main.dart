@@ -8,14 +8,38 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
+        
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData(
+      primarySwatch: Colors.yellow,
+      canvasColor: const Color.fromRGBO(110, 110, 110, 1),
+      fontFamily: 'Raleway',
+      textTheme: ThemeData.light().textTheme.copyWith(
+        bodyLarge: const TextStyle(
+          color: Color.fromRGBO(20, 51, 51, 1)
+        ),
+        bodyMedium: const TextStyle(
+          color: Color.fromRGBO(20, 51, 51, 1)
+        ),
+        bodySmall: const TextStyle(
+          color: Color.fromRGBO(20, 51, 51, 1)
+        ),
+        titleLarge:const TextStyle(
+          fontSize: 20,
+          fontFamily: 'RobotoCondensed',
+          fontWeight: FontWeight.bold
+        ), 
+      )
+    );
+
     return MaterialApp(
       title: 'Meals App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: theme.copyWith(
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+          secondary: Colors.amber,
+        ),
       ),
       home: const CategoriesScreen(),
     );
