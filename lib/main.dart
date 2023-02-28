@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
       primarySwatch: Colors.yellow,
-      canvasColor: const Color.fromRGBO(110, 110, 110, 1),
+      canvasColor: Color.fromARGB(255, 0, 162, 255),
       fontFamily: 'Raleway',
       textTheme: ThemeData.light().textTheme.copyWith(
         bodyLarge: const TextStyle(
@@ -31,6 +31,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'RobotoCondensed',
           fontWeight: FontWeight.bold
         ), 
+      ),
+      appBarTheme: AppBarTheme.of(context).copyWith(
+        color: Colors.pink[300]
       )
     );
 
