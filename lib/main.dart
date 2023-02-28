@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Text(
-          "text"
+          "text ${context.size.toString()}"
         )
       ),
     );
