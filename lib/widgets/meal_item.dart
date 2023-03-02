@@ -15,6 +15,32 @@ class MealItem extends StatelessWidget {
     required this.complexity,
     required this.affordability
   });
+
+  String get complexityText {
+    switch(complexity) {
+      case Complexity.Challenging:
+        return "Challenging";
+      case Complexity.Hard:
+        return "Hard";
+      case Complexity.Simple:
+        return "Simple";
+      default:
+        return "Unknwon";
+    }
+  }
+
+  String get affordabilityText {
+    switch(affordability) {
+      case Affordability.Affordable:
+        return Affordability.Affordable.name;
+      case Affordability.Pricey:
+        return Affordability.Pricey.name;
+      case Affordability.Luxurious:
+        return Affordability.Luxurious.name;
+      default:
+        return "Unknwon";
+    }    
+  }
   
   void selecctMeal() {}
   
@@ -30,17 +56,60 @@ class MealItem extends StatelessWidget {
         margin: EdgeInsets.all(10),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
-              ),
-              child: Image.network(
-                imageUrl, 
-                height: 250, 
-                width: double.infinity, 
-                fit: BoxFit.cover,
-              ),
+            Stack(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  // Image의 리소스를 네트워크에서 가져옴
+                  child: Image.network(
+                    imageUrl, 
+                    height: 250, 
+                    width: double.infinity, 
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                // child widget의 위치를 잡음
+                Positioned(
+                  bottom: 20,
+                  right: 10 ,
+                  child: Container(
+                    color: Colors.black54,
+                    width: MediaQuery.of(context).size.width / 3 * 2,
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                    child: Text(
+                      title,
+                      style: TextStyle(fontSize: 26, color: Colors.white),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                    ),
+                  ),
+                ),
+              ]
+            ),
+            Padding(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                Row(children: [
+                  Icon(Icons.schedule),
+                  SizedBox(width: 6,),
+                  Text("$duration min")
+                ],),
+                Row(children: [
+                  Icon(Icons.work),
+                  SizedBox(width: 6,),
+                  Text(complexityText)
+                ],),
+                Row(children: [
+                  Icon(Icons.attach_money),
+                  SizedBox(width: 6,),
+                  Text(affordabilityText)
+                ],),
+              ],),
             )
           ],
         ),
