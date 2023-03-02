@@ -45,9 +45,11 @@ class MyApp extends StatelessWidget {
           secondary: Colors.amber,
         ),
       ),
-      home: const CategoriesScreen(),
+      // home: const CategoriesScreen(),
       routes: {
-        '/category-meals' : (ctx) => CategoryMealsScreen(),
+        // '/'를 라우팅하면 home 페이지로 설정
+        '/' :(context) => const CategoriesScreen(),
+        CategoryMealsScreen.routeName : (ctx) => CategoryMealsScreen(),
       },
     );
   }

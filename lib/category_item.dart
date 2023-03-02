@@ -11,7 +11,8 @@ class CategoryItem extends StatelessWidget {
 
   void selectCategory(BuildContext context) {
     Navigator.of(context).pushNamed(
-      "/category-meals",
+      CategoryMealsScreen.routeName,
+      // 라우팅으로 전송할 데이터들, 어떤 형태의 데이터든지 상관 없음 cf. int, Stirng, List, Map ...
       arguments: {
         'id': id,
         'title': title
