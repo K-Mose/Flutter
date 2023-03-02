@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/screens/meal_detail_screen.dart';
 
 import '/screens./categories_screen.dart';
 import './screens/category_meals_screen.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
       primarySwatch: Colors.yellow,
-      canvasColor: Colors.yellow[200],
+      canvasColor: Color.fromRGBO(255, 255, 255, 1),
       fontFamily: 'Raleway',
       textTheme: ThemeData.light().textTheme.copyWith(
         bodyLarge: const TextStyle(
@@ -49,7 +50,8 @@ class MyApp extends StatelessWidget {
       routes: {
         // '/'를 라우팅하면 home 페이지로 설정
         '/' :(context) => const CategoriesScreen(),
-        CategoryMealsScreen.routeName : (ctx) => CategoryMealsScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },
     );
   }
