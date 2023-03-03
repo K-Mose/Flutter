@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/screens/error_screen.dart';
 import 'package:meals_app/screens/meal_detail_screen.dart';
 
 import '/screens./categories_screen.dart';
@@ -53,6 +54,20 @@ class MyApp extends StatelessWidget {
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },
+      /*
+      // routes에 정의되지 않은 named route의 셋팅과 정보, 라우팅 페이지를 리턴 함
+      onGenerateRoute: (settings) {
+        print(settings.name);
+        print(settings.arguments);
+        if (settings.name == "/somePage") {
+          return MaterialPageRoute(builder: (context) => const CategoriesScreen());
+        }
+        return null;
+      },
+      // onGenerateRoute에서 유효하지 않은 라우팅을 하게되면 호출됨
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (context) => const ErrorScreen());
+      }, */
     );
   }
 }
