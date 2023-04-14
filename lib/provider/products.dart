@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../models/product.dart';
 
+/*
+Inheritance - extends 
+Mixin - with 
+*/
 class Products with ChangeNotifier {
   List<Product> _items = [
     Product(
@@ -41,6 +45,10 @@ class Products with ChangeNotifier {
   List<Product> get items {
     // _item을 복사한 객체를 리턴
     return [..._items];
+  }
+
+  Product findById(String id) {
+    return _items.firstWhere((prd) => prd.id == id);
   }
 
   void addProduct(Product item) {

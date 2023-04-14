@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read();
+    // Provider 등록
     return ChangeNotifierProvider(
       create: (ctx) => Products(),
       child: MaterialApp(
